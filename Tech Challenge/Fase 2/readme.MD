@@ -9,23 +9,26 @@ Alunos:
 * Lucas Arruda - RM358628
 * Pedro Marins - RM356883
 
+## Interface TKInter 
+
+* Aurelio Thomasi Jr - RM358104
+
 ## Evidências do projeto
-- [Link para o repositório](https://github.com/leonardoramires/fiap-ia4devs)
 - [Link para o vídeo do projeto](https://youtu.be/LQtUcsGbxds)
 
 ## Como rodar o projeto
 
 1. Clonar o repositório
    ```bash
-   git clone https://github.com/leonardoramires/fiap-ia4devs.git
+   git clone https://github.com/Hideroshi/FIAP.git
    ```
 2. Instalar as dependências
    ```bash
-   pip install -r fase2/requirements.txt
+   pip install -r Fase2/requirements.txt
    ```
 3. Rodar o projeto
    ```bash
-   python fase2/main.py
+   python Fase2/main_tkinter.py
    ```
 
 > **Sobre instalação das dependências**: É recomendável utilizar o ambiente virtual do Python para instalar as dependências, utilizando o comando `python -m venv .venv` e depois ativar o ambiente virtual com o comando `source .venv/bin/activate`.
