@@ -227,7 +227,7 @@ A interface agora inclui funcionalidades avançadas para **exportação de resul
 
 A tabela de resultados é totalmente interativa, permitindo que o usuário explore os dados de forma intuitiva. Embora existam alguns **bugs conhecidos** relacionados à ferramenta de interface, eles não comprometem o funcionamento geral ou a precisão dos resultados.
 
-![Interface TTKinter](assets/tkinterface.png)
+![Interface TTKinter](assets/tkinterface_results.png)
 
 *Figura 4: Tabela de resultados interativa com opções de exportação.*
 
