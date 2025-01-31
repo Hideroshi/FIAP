@@ -208,102 +208,37 @@ Os critérios de avaliação são os seguintes:
 
 Este relatório foi gerado utilizando a biblioteca PyGame, que é uma biblioteca Python para criação de jogos e simulações. O relatório é responsável por exibir o resultado do algoritmo genético de forma visual, mostrando a alocação das ordens de serviço aos operadores ao longo do período de 5 dias, em formato de um calendário.
 
-## Informações gerais sobre o resultado do algoritmo
-A análise dos resultados do algoritmo genético para alocação de ordens de serviço de manutenção revela aspectos importantes sobre sua performance e limitações. O algoritmo foi desenvolvido para otimizar a distribuição de 100 ordens de serviço entre 15 operadores ao longo de 5 dias, considerando múltiplas variáveis como habilidades técnicas, prioridades e prazos.
+---
 
-### 1. 🔄 Comparação com outros algoritmos
-Outros algoritmos foram utilizados por ordem de realizar a comparação, como o algoritmo guloso, o algoritmo de programação linear e a alocação humana.
-Esta comparação foi realizada com base no fitness das soluções encontradas pelos algoritmos, que é uma medida da qualidade da solução encontrada. O resultado desta comparação pode ser visto na seção 📊 Estatísticas gerais do algoritmo.
+## **Atualização da Interface**
+### **1. Relatório com Tkinter e TTKBootstrap**
 
-### 2. 📊 Estatísticas gerais do algoritmo
+A interface foi desenvolvida utilizando as bibliotecas **Tkinter** e **TTKBootstrap**, proporcionando uma experiência interativa e dinâmica para o usuário. Durante a execução do algoritmo, o **medidor de melhor fitness** é atualizado em tempo real, permitindo que o usuário acompanhe o progresso do cálculo de forma visual.
 
-#### Informações gerais sobre as ordens:
-| Métrica | Valor |
-|---------|-------|
-| Total de Ordens | 100 |
-| Ordens Alocadas | 85 (85.0%) |
-| Ordens Não Alocadas | 15 |
+Além disso, a interface permite a interação direta com as tabelas de **ordens** e **operadores**, facilitando a visualização e o gerenciamento dos dados durante a execução do algoritmo.
 
-O algoritmo conseguiu alocar 85% das ordens de serviço.
 
-#### Análise por prioridade:
-| Prioridade | Quantidade | Percentual |
-|------------|------------|------------|
-| Urgente | 20 | 23.5% |
-| Alta | 29 | 34.1% |
-| Média | 24 | 28.2% |
-| Baixa | 12 | 14.1% |
+![Interface TTKinter](assets/tkinterface.png)
 
-#### Ordens não alocadas:
-Neste caso, o algoritmo não conseguiu alocar 15 ordens de serviço.
+*Figura 3: Interface gráfica desenvolvida com Tkinter e TTKBootstrap.*
 
-#### Comparação de Fitness entre os algoritmos
-| Algoritmo | Fitness |
-|-----------|---------|
-| Greedy Algorithm | 400.0 |
-| Linear Programming | -1005.0 |
-| Alocação Humana | 615.0 |
-| Genetic Algorithm | 1095.0 |
+### **2. Funcionalidades de Exportação e Interação**
+A interface agora inclui funcionalidades avançadas para **exportação de resultados**. Os dados podem ser salvos nos formatos **CSV** e **Excel**, proporcionando flexibilidade para análise posterior ou compartilhamento.
 
-Como podemos ver, o algoritmo genético foi o que obteve o melhor resultado, seguido pela alocação humana.
+A tabela de resultados é totalmente interativa, permitindo que o usuário explore os dados de forma intuitiva. Embora existam alguns **bugs conhecidos** relacionados à ferramenta de interface, eles não comprometem o funcionamento geral ou a precisão dos resultados.
 
-#### Distribuição por dia
-Resumo das ordens alocadas por dia:
+![Interface TTKinter](assets/tkinterface_results.png)
 
-| Dia | Total de Ordens | Horas Alocadas | Urgente | Alta | Média | Baixa |
-|-----|----------------|----------------|----------|------|-------|-------|
-| 1 | 18 | 80.0h | 17 | 1 | 0 | 0 |
-| 2 | 18 | 80.0h | 3 | 14 | 1 | 0 |
-| 3 | 16 | 76.0h | 0 | 14 | 2 | 0 |
-| 4 | 18 | 80.0h | 0 | 0 | 15 | 3 |
-| 5 | 15 | 76.0h | 0 | 0 | 6 | 9 |
+*Figura 4: Tabela de resultados interativa com opções de exportação.*
 
-### Dados dos operadores
-| operator_id | skills | level | shift | hours_per_day |
-|------------|--------|-------|-------|---------------|
-| op1 | pintura \| elétrica \| solda | sênior | manhã | 7 |
-| op2 | elétrica \| pintura \| alvenaria | júnior | manhã | 7 |
-| op3 | pintura \| elétrica \| hidráulica | sênior | noite | 7 |
-| op4 | pintura \| alvenaria \| elétrica | pleno | tarde | 9 |
-| op5 | pintura \| hidráulica | pleno | tarde | 9 |
-| op6 | solda \| hidráulica | especialista | tarde | 7 |
-| op7 | pintura \| elétrica \| alvenaria | júnior | tarde | 9 |
-| op8 | elétrica \| pintura \| solda | sênior | tarde | 7 |
-| op9 | pintura \| solda | júnior | tarde | 8 |
-| op10 | solda \| elétrica \| pintura | pleno | manhã | 9 |
-| op11 | elétrica \| alvenaria \| solda | sênior | manhã | 7 |
-| op12 | hidráulica \| alvenaria | sênior | noite | 9 |
-| op13 | hidráulica \| solda | júnior | tarde | 8 |
-| op14 | solda \| elétrica | especialista | manhã | 8 |
-| op15 | alvenaria \| elétrica \| hidráulica | especialista | manhã | 9 |
+---
 
-### Dados das ordens
-| id_ordem | Serviços | horas_estimadas | prioridade | inicio_esperado | status |
-|----------|----------|-----------------|------------|-----------------|---------|
-| os1 | elétrica | 5 | média | 4 | não_atendida |
-| os2 | hidráulica | 8 | alta | 1 | não_atendida |
-| os3 | hidráulica \| pintura | 5 | média | 2 | não_atendida |
-| os4 | hidráulica | 7 | baixa | 2 | não_atendida |
-| os5 | alvenaria | 2 | alta | 4 | não_atendida |
-| os96 | solda \| pintura | 8 | baixa | 5 | não_atendida |
-| os97 | solda \| hidráulica | 2 | urgente | 1 | não_atendida |
-| os98 | hidráulica | 5 | média | 5 | não_atendida |
-| os99 | elétrica | 2 | alta | 1 | não_atendida |
-| os100 | hidráulica | 3 | média | 5 | não_atendida |
+### **Melhorias Futuras**
 
-[100 rows x 6 columns]
+- **Correção de Bugs**: Estamos trabalhando para resolver os pequenos bugs relacionados à interface, visando uma experiência ainda mais fluida.
+- **Novas Funcionalidades**: Planejamos adicionar mais opções de personalização e relatórios detalhados para atender às necessidades dos usuários.
 
-### Dados das ordens atribuídas aos operdores (shape = (100, 17))
-| dia | id_ordem | id_operador | Serviços | compatibilidade_prioridade | hora_extra | total_hora_extra | status |
-|-----|----------|-------------|-----------|---------------------------|------------|------------------|---------|
-| 4 | os22 | op1 | solda \| pintura | OK | Não | -2 | atendida |
-| 1 | os36 | op1 | elétrica | OK | Não | -3 | atendida |
-| 1 | os49 | op1 | elétrica | OK | Sim | 2 | atendida |
-| 5 | os55 | op1 | pintura \| solda | OK | Não | 0 | atendida |
-| 2 | os68 | op1 | elétrica | OK | Sim | 1 | atendida |
-| ... | ... | ... | ... | ... | ... | ... | ... |
-| 2 | os30 | op9 | hidráulica \| pintura | OK | Não | 0 | atendida |
-| 1 | os48 | op9 | solda | OK | Não | -6 | atendida |
-| 3 | os78 | op9 | solda | OK | Não | -1 | atendida |
-| 1 | os90 | op9 | alvenaria \| solda | NOK | Não | -1 | atendida |
-| 4 | os96 | op9 | solda \| pintura | OK | Não | 0 | atendida |
+---
+
+Este projeto está em constante evolução, e sua contribuição é bem-vinda! Sinta-se à vontade para explorar o código, reportar problemas ou sugerir melhorias.
+Esperamos que esta atualização torne a experiência do usuário mais eficiente e agradável. Para mais detalhes, consulte a documentação do projeto ou entre em contato.
