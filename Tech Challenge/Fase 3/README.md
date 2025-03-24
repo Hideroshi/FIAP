@@ -93,7 +93,7 @@ a serem usados no treinamento do modelo.
 
 ## Exemplo de execução:
 ``` 
-(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge> python .\process_data.py  
+(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama> python .\process_data.py  
   
 Lendo os registros do arquivo              : 100%|███████████████| 2248619/2248619 [00:35<00:00, 62903.00it/s]  
 Processando registros lidos                : 100%|███████████████| 2248619/2248619 [00:14<00:00, 155615.25it/s]  
@@ -157,7 +157,7 @@ geradas e reduzindo o tempo e os custos associados ao treinamento de modelos gra
 # Exemplo de execução:
 
 ```
-(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge> python .\foundation_model.py
+(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama> python .\foundation_model.py
 🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
 🦥 Unsloth Zoo will now patch everything to make training faster!
 
@@ -393,6 +393,45 @@ O `SFTTrainer` (Supervised Fine-Tuning Trainer) é uma classe especializada para
 | `packing = False` | Define se entradas curtas devem ser concatenadas para otimizar o uso de espaço. No caso, está desativado. |
 
 ---
+
+# Explicação dos Parâmetros de Geração de Texto
+
+A função `.generate()` do modelo ajustado (`peft_model`) é responsável por gerar texto com base em um input processado. Cada argumento influencia diretamente **a forma como o modelo gera texto**, afetando **comprimento, aleatoriedade e eficiência**.
+
+```python
+outputs = peft_model.generate(
+    **inputs,
+    max_new_tokens = 128,  # Máximo de tokens na resposta
+    temperature    = 0.2,  # Controla aleatoriedade (0.0 a 1.0)
+    do_sample      = True, # Usa amostragem probabilística
+    use_cache      = True  # Ativa cache para melhorar a velocidade de geração
+)
+```
+
+| Parâmetro | O que faz? | Valores recomendados |
+|-----------|-----------|---------------------|
+| **`max_new_tokens`** | Define **o número máximo de novos tokens** que podem ser gerados **na resposta** | `50-200` (depende do contexto) |
+| **`temperature`** | Controla o nível de **aleatoriedade** da geração de texto | `0.3` (formal) - `0.8` (criativo) |
+| **`do_sample`** | Ativa **amostragem probabilística** | `False` (respostas fixas) - `True` (criatividade) |
+| **`use_cache`** | Usa cache para **acelerar geração** | Sempre `True` |
+
+**Exemplo 🔹 max_new_tokens:** Se `max_new_tokens = 128`, o modelo pode **gerar até 128 tokens** depois do prompt de entrada.
+  - Um valor muito **baixo** pode truncar a resposta antes que ela seja concluída.
+  - Um valor muito **alto** pode gerar respostas longas e desnecessárias, consumindo mais memória e tempo de inferência
+
+**Exemplo 🔹 temperature:** Escolhemos utilizar uma temperatura de `0.2` pois queriamos algo mais fixo, visto que deve ter um comportamento mais inclinado ao `RAG`.
+  - `temperature = 0.0` → **Texto mais determinístico** (o modelo escolhe sempre o token com maior probabilidade).
+  - `temperature = 1.0` → **Texto mais criativo e diversificado** (o modelo escolhe tokens menos prováveis com mais frequência).
+
+**Exemplo 🔹 do_sample:** Permite que o modelo **não escolha sempre o token mais provável**.
+  - Se `do_sample = False`, o modelo **sempre escolhe o token com maior probabilidade**, tornando as respostas **muito previsíveis**.
+  - Se `do_sample = True`, o modelo **pode escolher tokens menos prováveis**, tornando o texto mais **variado e criativo**.
+
+**Exemplo 🔹 use_cache:** Ativa um **cache interno** para acelerar a geração de tokens.
+  - Durante a geração, o modelo precisa **calcular os tokens anteriores repetidamente**.
+  - Com **`use_cache = True`**, ele **armazena os tokens já processados**, evitando recomputação desnecessária.
+
+--- 
 
 ### **Estatísticas de Treinamento:**
 
@@ -723,10 +762,10 @@ arquivo `rag_indexing.py`.
 
 ## Fluxo:
 
-    1. Carregamento de trn_processed.json
-    2. Quebra em chunks menores
-    3. Geração de embeddings
-    4. Armazenamento no ChromaDB
+  1. Carregamento de trn_processed.json
+  2. Quebra em chunks menores
+  3. Geração de embeddings
+  4. Armazenamento no ChromaDB
 
 O início do processo se dá com o consumo do arquivo `trn_processed.json`. Ele é 
 carregado para que seus dados sejam preparados para a indexação na vector store
@@ -1036,16 +1075,16 @@ years Now even infants and toddlers
 | **Mog's Kittens** | Errado | Parcialmente correto | Descrição original extraída da base |
 
 
-- O modelo com fine-tuning apresenta respostas mais detalhadas e relevantes em 
-  comparação ao modelo original.
-- O modelo com RAG utiliza a base de dados indexada para fornecer respostas mais 
-  precisas e contextualizadas, mas está limitado aos dados previamente indexados.
-- O modelo original (Foundation Model) apresenta respostas genéricas e, em alguns 
-  casos, completamente irrelevantes, como no exemplo de "Mog's Kittens", onde a 
-- resposta foi "The product is a pair of socks".
-- O modelo com fine-tuning demonstra uma melhoria significativa na qualidade das 
-  respostas, mas ainda apresenta redundâncias ou informações desnecessárias em 
-  alguns casos.
-- O modelo com RAG é altamente dependente da qualidade e abrangência dos dados 
-  indexados. Ele é ideal para cenários onde as informações relevantes estão 
-  contidas em uma base de dados específica.
+  - O modelo com fine-tuning apresenta respostas mais detalhadas e relevantes em 
+    comparação ao modelo original.
+  - O modelo com RAG utiliza a base de dados indexada para fornecer respostas mais 
+    precisas e contextualizadas, mas está limitado aos dados previamente indexados.
+  - O modelo original (Foundation Model) apresenta respostas genéricas e, em alguns 
+    casos, completamente irrelevantes, como no exemplo de "Mog's Kittens", onde a 
+  - resposta foi "The product is a pair of socks".
+  - O modelo com fine-tuning demonstra uma melhoria significativa na qualidade das 
+    respostas, mas ainda apresenta redundâncias ou informações desnecessárias em 
+    alguns casos.
+  - O modelo com RAG é altamente dependente da qualidade e abrangência dos dados 
+    indexados. Ele é ideal para cenários onde as informações relevantes estão 
+    contidas em uma base de dados específica.
