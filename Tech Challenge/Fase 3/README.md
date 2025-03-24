@@ -110,9 +110,17 @@ Arquivo processado salvo em                : trn_processed.json
 
 > **`unsloth/llama-3-8b-bnb-4bit`** - Implementação otimizada do LLaMA com:
 
-- **Quantização em 4 bits** (redução de memória)
+- **Quantização em 4 bits** : 
+    -A quantização em 4 bits reduz o consumo de memória do modelo ao armazenar pesos de redes neurais com menor precisão.
+    -Modelos tradicionais armazenam pesos com 32 bits (FP32) ou 16 bits (FP16), consumindo mais memória.
+    -4-bit quantization representa cada peso com apenas 4 bits, reduzindo drasticamente o uso de memória e permitindo a execução do modelo em GPUs com menos VRAM.
+    -Isso melhora a eficiência computacional, mas pode resultar em leve perda de precisão
 - **Compatível com Hugging Face Transformers**
-- **Projetado para GPUs com CUDA**
+    - O modelo pode ser carregado e utilizado diretamente com a biblioteca Hugging Face Transformers, que é um framework popular para LLMs.
+- **Projetado para GPUs com CUDA** : CUDA (Compute Unified Device Architecture) é a plataforma de computação paralela da NVIDIA, permitindo a execução eficiente de redes neurais em GPUs.
+    - Otimização para CUDA: O modelo aproveita operações aceleradas por GPU, como Flash Attention, que melhora a eficiência da memória.
+    - Desempenho: Permite rodar inferências e treinamentos muito mais rápido do que em CPUs.
+    - Compatibilidade: Suporta GPUs com Tensor Cores (ex: RTX 30xx, 40xx).
 - **8 bilhões de parâmetros**
 
 **Características:**
@@ -298,15 +306,93 @@ esperado pela biblioteca Hugging Face. Isso permite que ele seja utilizado
 diretamente em pipelines de treinamento e inferência, facilitando a integração 
 com modelos de aprendizado de máquina e otimizando o fluxo de trabalho.
 
-### **Parâmetros de Treinamento:**
+## **Parâmetros de Treinamento:**
 
-| Parâmetro               | Valor   | Descrição                   |
-|-------------------------|---------|-----------------------------|
-| **Batch size**         | 2       | Por GPU                      |
-| **Gradient accumulation** | 4       | Batch efetivo de 8           |
-| **Learning rate**      | 2e-4    | Taxa balanceada             |
-| **Max steps**          | 60      | Para testes                  |
-| **Optimizer**          | adamw_8bit | Otimizador quantizado        |
+### **🔹 Tamanho dos Batches e Gradientes**
+
+| Argumento | Descrição |
+|-----------|------------|
+| `per_device_train_batch_size = 2` | Define o número de exemplos processados por batch em cada GPU. Um batch pequeno consome menos memória, mas pode afetar a estabilidade do treinamento. |
+| `gradient_accumulation_steps = 4` | Acumula gradientes por 4 passos antes de atualizar os pesos do modelo. Isso simula um batch maior sem exigir mais memória da GPU. |
+
+**Exemplo:** Se `batch_size = 2` e `gradient_accumulation_steps = 4`, o modelo só atualiza os pesos após processar **8 exemplos**.
+
+---
+
+### **🔹 Etapas de Treinamento**
+
+| Argumento | Descrição |
+|-----------|------------|
+| `warmup_steps = 5` | Número de passos iniciais onde a taxa de aprendizado cresce gradualmente para evitar variações bruscas no gradiente. |
+| `max_steps = 60` | Número total de passos de treinamento. Neste caso, é um teste. Para um treinamento real, pode-se definir `num_train_epochs`. |
+| `#num_train_epochs = 2` | Define quantas épocas completas o dataset será percorrido durante o treinamento. |
+
+---
+
+### **🔹 Taxa de Aprendizado e Otimização**
+
+| Argumento | Descrição |
+|-----------|------------|
+| `learning_rate = 2e-4` | Define a taxa de aprendizado do otimizador. Valores altos aceleram o aprendizado, mas podem ser instáveis. |
+| `weight_decay = 0.01` | Regularização L2 para evitar overfitting, penalizando pesos muito grandes. |
+| `lr_scheduler_type = "linear"` | Define o decaimento da taxa de aprendizado. O tipo `linear` reduz a taxa gradualmente até o final do treinamento. |
+
+---
+
+### **🔹 Precisão e Performance**
+
+| Argumento | Descrição |
+|-----------|------------|
+| `fp16 = not is_bfloat16_supported()` | Usa **FP16** (16-bit floating point) se `bfloat16` não estiver disponível. FP16 economiza memória, mas pode ser instável. |
+| `bf16 = is_bfloat16_supported()` | Usa **bfloat16** se a GPU suportar. BF16 é mais estável que FP16, consumindo a mesma quantidade de memória. |
+| `gradient_checkpointing = True` | Ativa **gradient checkpointing**, salvando menos ativações durante o forward pass para economizar VRAM. Isso reduz o consumo de memória, mas aumenta o tempo de treinamento. |
+| `optim = "adamw_8bit"` | Usa o otimizador **AdamW** em 8 bits, reduzindo o uso de memória do otimizador sem perder eficiência. |
+| `max_grad_norm = 0.3` | Limita o valor máximo dos gradientes para evitar explosões no treinamento. |
+
+---
+
+### **🔹 Logging e Salvamento**
+
+| Argumento | Descrição |
+|-----------|------------|
+| `logging_steps = 1` | Define a frequência com que métricas como **loss** são registradas. Valores menores geram logs mais frequentes. |
+| `output_dir = "trainer_outputs"` | Define o diretório onde os logs e checkpoints do modelo serão salvos. |
+| `save_steps = 1000` | Frequência com que o modelo é salvo durante o treinamento. Um valor muito baixo pode gerar arquivos desnecessários e ocupar espaço. |
+
+---
+
+### **🔹 Reprodutibilidade**
+
+| Argumento | Descrição |
+|-----------|------------|
+| `seed = 3407` | Define uma semente fixa para garantir que os experimentos sejam reproduzíveis. Isso significa que, ao rodar o treinamento novamente, os resultados serão os mesmos. |
+
+---
+
+## **SFTTrainer**
+
+O `SFTTrainer` (Supervised Fine-Tuning Trainer) é uma classe especializada para **fine-tuning eficiente** usando LoRA. Ele recebe os argumentos definidos acima (`args = training_arguments`) e adiciona configurações específicas.
+
+### **🔹 Configurações Básicas**
+
+| Argumento | Descrição |
+|-----------|------------|
+| `model = peft_model` | O modelo que será treinado. Neste caso, um modelo **LoRA ajustado**. |
+| `tokenizer = tokenizer` | O tokenizador usado para processar os textos antes do treinamento. |
+| `train_dataset = prompt_dataset` | O dataset formatado no padrão necessário para o treinamento. |
+| `dataset_text_field = "text"` | Define qual campo do dataset contém o texto a ser usado no treinamento. |
+
+---
+
+### **🔹 Tamanho da Sequência e Processamento**
+
+| Argumento | Descrição |
+|-----------|------------|
+| `max_seq_length = uc["max_seq_length"]` | Define o tamanho máximo de tokens que o modelo pode processar em uma única entrada. |
+| `dataset_num_proc = 1` | Número de processos paralelos para pré-processamento do dataset. Valores maiores podem acelerar, mas exigem mais CPU. |
+| `packing = False` | Define se entradas curtas devem ser concatenadas para otimizar o uso de espaço. No caso, está desativado. |
+
+---
 
 ### **Estatísticas de Treinamento:**
 
