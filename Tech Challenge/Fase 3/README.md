@@ -24,7 +24,7 @@ Este trabalho foi planejado para rodar no **Windows**. Portanto, é necessário 
 
 ### Configuração do Ambiente:
 
-( Configuração utilziada nos testes)
+( Configuração utilizada nos testes)
 - **Sistema Operacional:** Windows 11
 - **Python:** 3.12.6
 - **GPU:** RTX 4060
@@ -47,7 +47,7 @@ A versão `2025.2.X` apresentou problemas. Foi utilizada a versão `2025.1.5` ne
 pip install unsloth==2025.1.5
 ```
 
-A verão de março foi testada em outra maquina e funciona também:
+A versão de março foi testada em outra máquina e funciona também:
 
 ```bash
 pip install --no-deps "unsloth>=2025.3.8" "unsloth_zoo>=2025.3.7" --upgrade --force-reinstall
@@ -59,7 +59,7 @@ pip install --no-deps "unsloth>=2025.3.8" "unsloth_zoo>=2025.3.7" --upgrade --fo
 
 ### **Fonte dos Dados**
 
-Os dados utilizados foram obtidos do **The AmazonTitles-1.3MM**.
+Os dados utilizados foram obtidos do [Amazon Titles Reasoning](https://huggingface.co/datasets/rickwalking/amazon-titles-reasoning).
 
 ### **Estrutura dos Dados**
 
@@ -74,9 +74,9 @@ O arquivo `trn.json` contém **2.248.619 registros**. Para o fine-tuning, utiliz
 
 ### **Processamento dos Dados**
 
-O arquivo `process_data.py` realiza o processamento dos dados. 
-    1. **Filtragem:** Registros com `content` vazio ou <100 caracteres são descartados.
-    2. **Geração do dataset final:** Criado o arquivo `trn_processed.json` com **1.216.560 registros válidos**.
+O arquivo `process_data.py` realiza o processamento dos dados: 
+  1. **Filtragem:** Registros com `content` vazio ou <100 caracteres são descartados.
+  2. **Geração do dataset final:** Criado o arquivo `trn_processed.json` com **1.216.560 registros válidos**.
 
 Vamos descartar os registros com `content` vazio ou com o conteúdo menor do que 100 caracteres.
 Com isto, geramos o arquivo `trn_processed.json`, com 1.216.560 registros aptos 
@@ -111,16 +111,16 @@ Arquivo processado salvo em                : trn_processed.json
 > **`unsloth/llama-3-8b-bnb-4bit`** - Implementação otimizada do LLaMA com:
 
 - **Quantização em 4 bits** : 
-    -A quantização em 4 bits reduz o consumo de memória do modelo ao armazenar pesos de redes neurais com menor precisão.
-    -Modelos tradicionais armazenam pesos com 32 bits (FP32) ou 16 bits (FP16), consumindo mais memória.
-    -4-bit quantization representa cada peso com apenas 4 bits, reduzindo drasticamente o uso de memória e permitindo a execução do modelo em GPUs com menos VRAM.
-    -Isso melhora a eficiência computacional, mas pode resultar em leve perda de precisão
+  -A quantização em 4 bits reduz o consumo de memória do modelo ao armazenar pesos de redes neurais com menor precisão.
+  -Modelos tradicionais armazenam pesos com 32 bits (FP32) ou 16 bits (FP16), consumindo mais memória.
+  -4-bit quantization representa cada peso com apenas 4 bits, reduzindo drasticamente o uso de memória e permitindo a execução do modelo em GPUs com menos VRAM.
+  -Isso melhora a eficiência computacional, mas pode resultar em leve perda de precisão
 - **Compatível com Hugging Face Transformers**
-    - O modelo pode ser carregado e utilizado diretamente com a biblioteca Hugging Face Transformers, que é um framework popular para LLMs.
+  - O modelo pode ser carregado e utilizado diretamente com a biblioteca Hugging Face Transformers, que é um framework popular para LLMs.
 - **Projetado para GPUs com CUDA** : CUDA (Compute Unified Device Architecture) é a plataforma de computação paralela da NVIDIA, permitindo a execução eficiente de redes neurais em GPUs.
-    - Otimização para CUDA: O modelo aproveita operações aceleradas por GPU, como Flash Attention, que melhora a eficiência da memória.
-    - Desempenho: Permite rodar inferências e treinamentos muito mais rápido do que em CPUs.
-    - Compatibilidade: Suporta GPUs com Tensor Cores (ex: RTX 30xx, 40xx).
+  - Otimização para CUDA: O modelo aproveita operações aceleradas por GPU, como Flash Attention, que melhora a eficiência da memória.
+  - Desempenho: Permite rodar inferências e treinamentos muito mais rápido do que em CPUs.
+  - Compatibilidade: Suporta GPUs com Tensor Cores (ex: RTX 30xx, 40xx).
 - **8 bilhões de parâmetros**
 
 **Características:**
@@ -265,7 +265,7 @@ para acelerar o treinamento, enquanto o LoRA permite ajustar apenas um pequeno
 número de parâmetros, reduzindo significativamente os requisitos de memória e 
 tempo de execução, sem comprometer a qualidade do modelo treinado.
 
-Inicialmente, a configuração do Unsloth é feita, de forma a preparar o modelo 
+Inicialmente, a configuração do Unsloth é feita de forma a preparar o modelo 
 para fine-tuning. Com a configuração pronta, modelo e tokenizador são carregados
 e retornado. Depois, aplicamos os adaptadores LoRA ao mesmo modelo, Deixando-o 
 pronto para o treinamento.
@@ -288,13 +288,13 @@ Neste momento, uma mudança de foco precisou ser feita: a quantidade de itens
 a serem treinadas (1.216.560) implicava em um tempo de treinamento que excediam 
 7 dias. Com isto, o "prompt dataset" foi reduzido para 5000 item, o que permitiu
 a aplicação de duas épocas de treinamento (algo em torno de 1250 iterações) 
-tomando um total 2:30 para que a tarefa fosse realizada. É importante ressaltar 
+tomando um total 2:30h para que a tarefa fosse realizada. É importante ressaltar 
 que a configuração presente no código, a GPU utilizada e o conjunto de dados de 
 treino influenciam diretamente no tempo de execução do treinamento. Algumas 
 estatísticas são mostradas após o treino (tempo gasto, consumo de memória).
 
 Ao finalizarmos esta etapa, preparamos o modelo treinado para a realização de 
-inferências. Duas consultas são realizadas, apenas para mostrar as capacidades 
+inferências. Duas consultas são realizadas, apenas para mostrar as capacidades ### ARRUMAR
 de exibição das respostas às consultas: a exibição completa, após o resultado 
 retornado ou sua apresentação conforme o modelo vai gerando a resposta.
 
@@ -388,7 +388,7 @@ O `SFTTrainer` (Supervised Fine-Tuning Trainer) é uma classe especializada para
 
 | Argumento | Descrição |
 |-----------|------------|
-| `max_seq_length = uc["max_seq_length"]` | Define o tamanho máximo de tokens que o modelo pode processar em uma única entrada. |
+| `max_seq_length = 8192` | Define o tamanho máximo de tokens que o modelo pode processar em uma única entrada. |
 | `dataset_num_proc = 1` | Número de processos paralelos para pré-processamento do dataset. Valores maiores podem acelerar, mas exigem mais CPU. |
 | `packing = False` | Define se entradas curtas devem ser concatenadas para otimizar o uso de espaço. No caso, está desativado. |
 
@@ -712,10 +712,9 @@ Resposta do modelo:
 O processo de RAG (Retrieval Augmented Generation) do modelo envolve duas 
 etapas: na primeira, realizamos a indexação dos dados que iremos trabalhar
 com o modelo de IA escolhido (`unsloth/llama-3-8b-bnb-4bit`) enquanto na 
-segunda, interrogamos o modelo utilizando a base de dados indexada, utilizando  
-RAG.
+segunda, interrogamos o modelo utilizando a base de dados indexada, utilizando RAG.
 Uma etapa intermediária foi introduzida, apenas para verificar a indexação dos 
-dados de trabalho (trn_processed.json). 
+dados de trabalho `(trn_processed.json)`. 
 
 ## Indexação dos Dados
 
@@ -731,7 +730,7 @@ arquivo `rag_indexing.py`.
 
 O início do processo se dá com o consumo do arquivo `trn_processed.json`. Ele é 
 carregado para que seus dados sejam preparados para a indexação na vector store
-(ChromaDB). Para otimizar as busca, os dados são quebrados em pedaços menores 
+(`ChromaDB`). Para otimizar as busca, os dados são quebrados em pedaços menores 
 (chunks), antes de serem convertidos em vetores de embeddings. Com os embeddings
 gerados, chegou o momento de converter os dados processados em documentos que 
 serão armazenados na vector store. Tendo os documentos prontamente convertidos, 
@@ -837,7 +836,7 @@ buscas e exibir os resultados.
 
 Os resultados retornados são o 3 mais relevantes ao produto pesquisado. O 
 exemplo de execução abaixo mostra os resultados obtidos para o produto
-"Girls Ballet Tutu Neon Pink".  
+`Girls Ballet Tutu Neon Pink`.  
 
 ## Exemplo de execução:
 
@@ -885,8 +884,8 @@ Realizando consultas na vector_store
 
 ## Testando o Modelo com RAG
 
-Nosso código para a realização de consultas ao modelo, utilizando RAG está 
-disponível no arquivo "rag_model_retriever.py".
+Nosso código para a realização de consultas ao modelo utilizando RAG está 
+disponível no arquivo `rag_model_retriever.py`.
 
 ## Exemplo de execução:
 
@@ -1028,12 +1027,15 @@ years Now even infants and toddlers
 | The Prophet                 | The Prophet is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money. It is a product that helps you to find the best way to spend your money.                                      | The Prophet is a book of 26 prose poetry essays written in English by  LebaneseAmerican artist Kahlil Gibran 1883ndash1931 The Prophet has been  translated into over 20 languages and has sold more than 100 million copies  worldwide  | In a distant timeless place a mysterious prophet walks the sands At the moment of his departure he wishes to offer the people gifts but possesses nothing The people gather round each asks a question of the heart and the mans wisdom is his gift It is Gibrans gift to us as well for Gibrans prophet is rivaled in his wisdom only by the founders of the worlds great religions On the most basic topicsmarriage children friendship work pleasurehis words have a power and lucidity that in another era would surely have provoked the description divinely inspired Free of dogma free of power structures and metaphysics consider these poetic moving aphorisms a 20thcentury supplement to all sacred traditionsas millions of other readers already haveBrian BruyaThis text refers to theHardcoveredition|
 | The Book of Revelation      | The Book of Revelation is a book of the New Testament of the Bible, and its title originated from the first word of the text in the Koine Greek: apokalypsis, meaning "unveiling" or "revelation". The author describes himself as "John" and does not identify himself as the son of Zebedee, the apostle John. The text is a letter to seven churches in the Roman province of Asia, and is a call to the churches to remain faithful to Jesus Christ, and individual letters to each church, with a promise of a swift punishment for Christian communities that are in a state of apostasy. The Book of Revelation is the final book of the New Testament and occupies a central place in Christian eschatology. By tradition, this prophecy was revealed by its author to the apostle John on the island of Patmos, and from its first readers, this prophecy has been accepted as of divine inspiration. The author of Revelation does not identify himself, but introduces his work as "the revelation of Jesus Christ", which he received "by an angel" from God.                                                     | The Book of Revelation is the last book of the New Testament and one of the most enigmatic and controversial works in Western literature It is a book of  apocalyptic prophecy that predicts the end of the world and the Last Judgment  The book is also known as the Apocalypse of John or simply the Apocalypse  | American Baptist pastor Bible teacher and writer Clarence Larkin was born October 28 1850 in Chester Delaware County Pennsylvania He was converted to Christ at the age of 19 and then felt called to the Gospel ministry but the doors of opportunity for study and ministry did not open immediately He then got a job in a bank When he was 21 years old he left the bank and went to college graduating as a mechanical engineer He continued as a professional draftsman for a while then he became a teacher of the blind Later failing health compelled him to give up his teaching career After a prolonged rest he became a manufacturer When he was converted he had become a member of the Episcopal Church but in 1882he became a Baptist and was ordained as a Baptist minister two years later He went directly from business into the ministry His first charge was at Kennett Square Pennsylvania his second pastorate was at Fox Chase Pennsylvania where he remained for 20 years He was not a premillennialist at the time of his ordination but his study of the Scriptures with the help of some books that fell into his hands led him to adopt the premillennialist position He began to make large wall charts which he titled Prophetic Truth for use in the pulpit These led to his being invited to teach in connection with his pastoral work in two Bible institutes During this time he published a number of prophetical charts which were widely circulated When World War I broke out in 1914 he was called on for addresses on The War and Prophecy Then God laid it on his heart to prepare a work on Dispensational Truth or Gods Plan and Purpose in the Ages containing a number of charts with descriptive matter He spent three years of his life designing and drawing the charts and preparing the text The favorable reception it has had since it was first published in 1918 seems to indicate that the world was waiting for such a book Because it had a large and wide circulation in this and other lands the first edition was soon exhausted It was followed by a second edition and then realizing that the book was of permanent value Larkin revised it and expanded it printing it in its present form He went to be with the Lord on January 24 1924This text refers to thePaperbackedition|
 
+---
+📌 **Conclusão:**
+
 | Produto                   | Foundation Model | Fine-Tuned Model | RAG Model |
 |---------------------------|-----------------|-----------------|-----------|
 | **Girls Ballet Tutu** | Genérica e irrelevante | Melhorada, mas imprecisa | Extraída diretamente da base de dados |
 | **Mog's Kittens** | Errado | Parcialmente correto | Descrição original extraída da base |
 
-📌 **Conclusão:**
+
 - O modelo com fine-tuning apresenta respostas mais detalhadas e relevantes em 
   comparação ao modelo original.
 - O modelo com RAG utiliza a base de dados indexada para fornecer respostas mais 
