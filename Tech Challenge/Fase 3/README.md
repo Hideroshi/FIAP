@@ -1,4 +1,4 @@
-# Fine-Tuning de Modelo de Linguagem com Unsloth e LoRA
+# Fine-Tuning de LLM com Unsloth e LoRA
 
 ## Visão Geral do Processo
 
@@ -110,17 +110,17 @@ Arquivo processado salvo em                : trn_processed.json
 
 > **`unsloth/llama-3-8b-bnb-4bit`** - Implementação otimizada do LLaMA com:
 
-    - **Quantização em 4 bits** (redução de memória)
-    - **Compatível com Hugging Face Transformers**
-    - **Projetado para GPUs com CUDA**
-    - **8 bilhões de parâmetros**
+- **Quantização em 4 bits** (redução de memória)
+- **Compatível com Hugging Face Transformers**
+- **Projetado para GPUs com CUDA**
+- **8 bilhões de parâmetros**
 
-    **Características:**
+**Características:**
 
-    - Otimizado para eficiência em memória e desempenho
-    - Suporta Flash Attention e LoRA
-    - Ideal para fine-tuning em recursos limitados
-    - Adequado para RAG (Retrieval Augmented Generation)
+- Otimizado para eficiência em memória e desempenho
+- Suporta Flash Attention e LoRA
+- Ideal para fine-tuning em recursos limitados
+- Adequado para RAG (Retrieval Augmented Generation)
     
 📌 **Fonte:** [Hugging Face Model Card](https://huggingface.co/unsloth/llama-3-8b-bnb-4bit)
 
@@ -231,10 +231,10 @@ Process finished with exit code 0
 # 4. Fine-Tuning do Modelo
 
 ## Processo em Duas Etapas
-    1. **Treinamento do modelo base**
-    2. **Interrogação do modelo treinado**
+1. **Treinamento do modelo base**
+2. **Interrogação do modelo treinado**
 
-O processo de fine-tuning do modelo envolve duas etapas: na primeira, realizamos o fine-tuning do modelo escolhido ("unsloth/llama-3-8b-bnb-4bit") enquanto na segunda, interrogamos o modelo treinado (./lora_model_llama-3-8b-bnb-4bit).
+O processo de fine-tuning do modelo envolve duas etapas: na primeira, realizamos o fine-tuning do modelo escolhido `("unsloth/llama-3-8b-bnb-4bit")` enquanto na segunda, interrogamos o modelo treinado `(./lora_model_llama-3-8b-bnb-4bit)`.
 
 ## Treinamento do Modelo
 
@@ -246,11 +246,9 @@ O proceso de fine-tuning é feito a partir do arquivo processado
 
 **Principais Componentes:**
 
-    Uso de Unsloth e LoRA para eficiência
-
-    Formatação Alpaca para prompts
-
-    Redução para 5.000 itens (devido a restrições de tempo)
+    - Uso de Unsloth e LoRA para eficiência
+    - Formatação Alpaca para prompts
+    - Redução para 5.000 itens (devido a restrições de tempo)
 
 O uso do Unsloth e do LoRA foi motivado pela necessidade 
 de realizar o fine-tuning de modelos grandes de forma eficiente e com menor 
@@ -547,10 +545,10 @@ Done.
 ## Testando Modelo Treinado
 
 Nosso código para o treinamento do modelo está disponível no arquivo 
-"ft_test_trained_model.py".
+`"ft_test_trained_model.py"`.
 
 O proceso de fine-tuning é feito a partir do arquivo processado 
-(trn_processed.json) na fase de preparação dos dados para treinamento.
+(`trn_processed.json`) na fase de preparação dos dados para treinamento.
 
 ## Exemplo de execução:
 
@@ -622,8 +620,8 @@ Resposta do modelo:
 # 5. Implementação de RAG (Retrieval Augmented Generation)
 
 ### **Processo em Duas Etapas:**
-    1. **Indexação dos dados** no ChromaDB
-    2. **Consulta do modelo com base indexada**
+1. **Indexação dos dados** no ChromaDB
+2. **Consulta do modelo com base indexada**
 
 O processo de RAG (Retrieval Augmented Generation) do modelo envolve duas 
 etapas: na primeira, realizamos a indexação dos dados que iremos trabalhar
