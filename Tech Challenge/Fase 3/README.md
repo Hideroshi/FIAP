@@ -253,10 +253,9 @@ O proceso de fine-tuning é feito a partir do arquivo processado
 `trn_processed.json` na fase de preparação dos dados para treinamento.
 
 **Principais Componentes:**
-
-    - Uso de Unsloth e LoRA para eficiência
-    - Formatação Alpaca para prompts
-    - Redução para 5.000 itens (devido a restrições de tempo)
+  - Uso de Unsloth e LoRA para eficiência
+  - Formatação Alpaca para prompts
+  - Redução para 5.000 itens (devido a restrições de tempo)
 
 O uso do Unsloth e do LoRA foi motivado pela necessidade 
 de realizar o fine-tuning de modelos grandes de forma eficiente e com menor 
@@ -415,19 +414,19 @@ outputs = peft_model.generate(
 | **`do_sample`** | Ativa **amostragem probabilística** | `False` (respostas fixas) - `True` (criatividade) |
 | **`use_cache`** | Usa cache para **acelerar geração** | Sempre `True` |
 
-**Exemplo 🔹 max_new_tokens:** Se `max_new_tokens = 128`, o modelo pode **gerar até 128 tokens** depois do prompt de entrada.
+**🔹Exemplo "max_new_tokens":** Se `max_new_tokens = 128`, o modelo pode **gerar até 128 tokens** depois do prompt de entrada.
   - Um valor muito **baixo** pode truncar a resposta antes que ela seja concluída.
   - Um valor muito **alto** pode gerar respostas longas e desnecessárias, consumindo mais memória e tempo de inferência
 
-**Exemplo 🔹 temperature:** Escolhemos utilizar uma temperatura de `0.2` pois queriamos algo mais fixo, visto que deve ter um comportamento mais inclinado ao `RAG`.
+**🔹Exemplo "temperature":** Escolhemos utilizar uma temperatura de `0.2` pois queriamos algo mais fixo, visto que deve ter um comportamento mais inclinado ao `RAG`.
   - `temperature = 0.0` → **Texto mais determinístico** (o modelo escolhe sempre o token com maior probabilidade).
   - `temperature = 1.0` → **Texto mais criativo e diversificado** (o modelo escolhe tokens menos prováveis com mais frequência).
 
-**Exemplo 🔹 do_sample:** Permite que o modelo **não escolha sempre o token mais provável**.
+**🔹Exemplo "do_sample":** Permite que o modelo **não escolha sempre o token mais provável**.
   - Se `do_sample = False`, o modelo **sempre escolhe o token com maior probabilidade**, tornando as respostas **muito previsíveis**.
   - Se `do_sample = True`, o modelo **pode escolher tokens menos prováveis**, tornando o texto mais **variado e criativo**.
 
-**Exemplo 🔹 use_cache:** Ativa um **cache interno** para acelerar a geração de tokens.
+**🔹Exemplo "use_cache":** Ativa um **cache interno** para acelerar a geração de tokens.
   - Durante a geração, o modelo precisa **calcular os tokens anteriores repetidamente**.
   - Com **`use_cache = True`**, ele **armazena os tokens já processados**, evitando recomputação desnecessária.
 
@@ -447,7 +446,7 @@ Memória GPU utilizada: 9.125 GB (114.12% da capacidade)
 A seguir, o log de execução deste código:
 
 ``` 
-(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge> python .\fine_tuning.py  
+(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama> python .\fine_tuning.py  
 🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.  
 🦥 Unsloth Zoo will now patch everything to make training faster!  
 
@@ -678,7 +677,7 @@ O proceso de fine-tuning é feito a partir do arquivo processado
 ## Exemplo de execução:
 
 ```
-(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge> python .\ft_test_trained_model.py  
+(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama> python .\ft_test_trained_model.py  
 🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.  
 🦥 Unsloth Zoo will now patch everything to make training faster!  
   
@@ -779,7 +778,7 @@ embeddings criados.
 ## Exemplo de execução:
 
 ```
-(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge> python .\rag_indexing.py 
+(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama> python .\rag_indexing.py 
 
 Carregando dados do arquivo processado...
 Total de registros gerados:5000
@@ -796,7 +795,7 @@ Product: Girls Ballet Tutu Neon Pink - Description: High quality 3 layer ballet 
 
 Criando modelo de embeddings...
 Dividindo documentos JSON: 100%|██████████| 5000/5000 [00:00<00:00, 555316.30it/s]
-C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\rag_indexing.py:68: 
+C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama\rag_indexing.py:68: 
 LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in 
 LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists 
 in the :class:`~langchain-huggingface package and should be used instead. To use 
@@ -838,7 +837,7 @@ Exemplo de embedding:
 
 Convertendo json_data em lc_documents...
 
-C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\rag_indexing.py:122: 
+C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama\rag_indexing.py:122: 
 LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 
 and will be removed in 1.0. An updated version of the class exists in the :class:
 `~langchain-chroma package and should be used instead. To use it run `pip install -U :class:
@@ -880,12 +879,12 @@ exemplo de execução abaixo mostra os resultados obtidos para o produto
 ## Exemplo de execução:
 
 ```
-(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge> python .\rag_search_vs.py  
+(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama> python .\rag_search_vs.py  
   
 Criando modelo de embeddings...  
   
 Criando modelo de embeddings...  
-C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\rag_indexing.py:68:   
+C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama\rag_indexing.py:68:   
 LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in   
 LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists   
 in the :class:`~langchain-huggingface package and should be used instead. To use it run `  
@@ -894,7 +893,7 @@ pip install -U :class:`~langchain-huggingface` and import as
   embeddings_model = HuggingFaceEmbeddings(  
   
 Criando vector_store para o embeddings_model...  
-C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\rag_indexing.py:122:   
+C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama\rag_indexing.py:122:   
 LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9   
 and will be removed in 1.0. An updated version of the class exists in the :class:  
 `~langchain-chroma package and should be used instead. To use it run `  
@@ -929,14 +928,14 @@ disponível no arquivo `rag_model_retriever.py`.
 ## Exemplo de execução:
 
 ```
-(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge> python .\rag_model_retriever.py  
+(.venv) PS C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama> python .\rag_model_retriever.py  
 🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.  
 🦥 Unsloth Zoo will now patch everything to make training faster!  
   
 Criando modelo de embeddings...  
   
 Criando modelo de embeddings...  
-C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\rag_indexing.py:68: 
+C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama\rag_indexing.py:68: 
 LangChainDeprecationWarning: The class `HuggingFaceEmbeddings` was deprecated in 
 LangChain 0.2.2 and will be removed in 1.0. An updated version of the class exists 
 in the :class:`~langchain-huggingface package and should be used instead. To use 
@@ -945,7 +944,7 @@ it run `pip install -U :class:`~langchain-huggingface` and import as `from :clas
   embeddings_model = HuggingFaceEmbeddings(  
   
 Criando vector_store para o embeddings_model...  
-C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\rag_indexing.py:122: 
+C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama\rag_indexing.py:122: 
 LangChainDeprecationWarning: The class `Chroma` was deprecated in LangChain 0.2.9 
 and will be removed in 1.0. An updated version of the class exists in the :class:
 `~langchain-chroma package and should be used instead. To use it run `pip install 
@@ -985,7 +984,7 @@ Modelo unsloth/llama-3-8b-bnb-4bit e tokenizador carregados e com sucesso!
 ###############################################################################  
   
 Modelo preparado para inferência!  
-C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\rag_model_retriever.py:35: 
+C:\acmattos\dev\tools\Python\ia4devs\module_03\04_tech_challenge\llama\rag_model_retriever.py:35: 
 LangChainDeprecationWarning: The method `BaseRetriever.get_relevant_documents` 
 was deprecated in langchain-core 0.1.46 and will be removed in 1.0. Use :meth:
 `~invoke` instead.  
