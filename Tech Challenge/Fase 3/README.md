@@ -110,11 +110,11 @@ Arquivo processado salvo em                : trn_processed.json
 
 > **`unsloth/llama-3-8b-bnb-4bit`** - Implementação otimizada do LLaMA com:
 
-- **Quantização em 4 bits** : 
-  -A quantização em 4 bits reduz o consumo de memória do modelo ao armazenar pesos de redes neurais com menor precisão.
-  -Modelos tradicionais armazenam pesos com 32 bits (FP32) ou 16 bits (FP16), consumindo mais memória.
-  -4-bit quantization representa cada peso com apenas 4 bits, reduzindo drasticamente o uso de memória e permitindo a execução do modelo em GPUs com menos VRAM.
-  -Isso melhora a eficiência computacional, mas pode resultar em leve perda de precisão
+- **Quantização em 4 bits**
+  - A quantização em 4 bits reduz o consumo de memória do modelo ao armazenar pesos de redes neurais com menor precisão.
+  - Modelos tradicionais armazenam pesos com 32 bits (FP32) ou 16 bits (FP16), consumindo mais memória.
+  - 4-bit quantization representa cada peso com apenas 4 bits, reduzindo drasticamente o uso de memória e permitindo a execução do modelo em GPUs com menos VRAM.
+  - Isso melhora a eficiência computacional, mas pode resultar em leve perda de precisão
 - **Compatível com Hugging Face Transformers**
   - O modelo pode ser carregado e utilizado diretamente com a biblioteca Hugging Face Transformers, que é um framework popular para LLMs.
 - **Projetado para GPUs com CUDA** : CUDA (Compute Unified Device Architecture) é a plataforma de computação paralela da NVIDIA, permitindo a execução eficiente de redes neurais em GPUs.
