@@ -1,2 +1,10 @@
 Tech Challenge/Fase 1/Video/
 /Tech Challenge/Fase 2/functions/__pycache__
+/Tech Challenge/Fase 3/__pycache__
+/Tech Challenge/Fase 3/chroma_langchain_db
+/Tech Challenge/Fase 3/lora_model_llama-3-8b-bnb-4bit
+/Tech Challenge/Fase 3/trainer_outputs
+/Tech Challenge/Fase 3/unsloth_compiled_cache
+Tech Challenge/Fase 3/trn.json
+Tech Challenge/Fase 3/trn_processed.json
+Tech Challenge/Fase 3/trn_processed_dataset.json

@@ -196,7 +196,7 @@ Os critérios de avaliação são os seguintes:
      - Algoritmo Genético
      - Alocação Humana
      - Algoritmo Guloso
-     - Programação Linear
+     - Programacao Linear
    - Conversão para DataFrame com detalhes de:
      - Alocação ordem-operador
      - Compatibilidade de habilidades
