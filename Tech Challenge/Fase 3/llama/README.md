@@ -1,5 +1,5 @@
-# Tech Challenge - Pós-Tech - FIAP
-# Fase 3 - Fine-Tuning de LLM com Unsloth e LoRA
+# Tech Challenge - Pós-Tech - IA For Devs - FIAP
+# Fase 3 - Fine-Tuning de LLM com Unsloth e LoRA do modelo llama.
 
 ## Alunos:
 
@@ -311,9 +311,9 @@ treino influenciam diretamente no tempo de execução do treinamento. Algumas
 estatísticas são mostradas após o treino (tempo gasto, consumo de memória).
 
 Ao finalizarmos esta etapa, preparamos o modelo treinado para a realização de 
-inferências. Duas consultas são realizadas, apenas para mostrar as capacidades ### ARRUMAR
-de exibição das respostas às consultas: a exibição completa, após o resultado 
-retornado ou sua apresentação conforme o modelo vai gerando a resposta.
+inferências. Duas consultas são realizadas apenas para mostrar as capacidades
+de exibição das respostas. A exibição completa vem após o resultado 
+retornado da sua apresentação conforme o modelo vai gerando a resposta.
 
 Concluído este pequeno teste, salvamos o modelo e seus adaptadores LoRA 
 localmente.
