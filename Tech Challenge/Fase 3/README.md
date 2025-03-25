@@ -1,4 +1,22 @@
-# Fine-Tuning de LLM com Unsloth e LoRA
+# Tech Challenge - Pós-Tech - FIAP
+# Fase 3 - Fine-Tuning de LLM com Unsloth e LoRA
+
+## Alunos:
+
+- André Mattos - RM358905
+- Aurelio Thomasi Jr - RM358104
+- Leonardo Ramires - RM358190
+- Lucas Arruda - RM358628
+- Pedro Marins - RM356883
+
+## Evidências do projeto
+
+- Link para o repositório: [Repositorio Git](https://github.com/acmattos/ia4devs/tree/main/module_03/04_tech_challenge)
+- Link para o vídeo de apresentação:
+- Link para o modelo treinado: [ACMattosHE/lora_model_llama-3-8b-bnb-4bit](https://huggingface.co/ACMattosHE/lora_model_llama-3-8b-bnb-4bit/tree/main)
+- Link para o dataset: [The AmazonTitles-1.3MM](https://drive.google.com/file/d/12zH4mL2RX8iSvH0VCNnd3QxO4DzuHWnK/view)
+
+---
 
 ## Visão Geral do Processo
 
@@ -59,7 +77,7 @@ pip install --no-deps "unsloth>=2025.3.8" "unsloth_zoo>=2025.3.7" --upgrade --fo
 
 ### **Fonte dos Dados**
 
-Os dados utilizados foram obtidos do [Amazon Titles Reasoning](https://huggingface.co/datasets/rickwalking/amazon-titles-reasoning).
+Os dados utilizados foram obtidos do [The AmazonTitles-1.3MM](https://drive.google.com/file/d/12zH4mL2RX8iSvH0VCNnd3QxO4DzuHWnK/view).
 
 ### **Estrutura dos Dados**
 
