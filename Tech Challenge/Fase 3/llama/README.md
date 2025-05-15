@@ -1,5 +1,5 @@
-# Tech Challenge - Pós-Tech - FIAP
-# Fase 3 - Fine-Tuning de LLM com Unsloth e LoRA
+# Tech Challenge - Pós-Tech - IA For Devs - FIAP
+# Fase 3 - Fine-Tuning de LLM com Unsloth e LoRA do modelo llama.
 
 ## Alunos:
 

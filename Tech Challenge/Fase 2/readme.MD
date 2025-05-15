@@ -1,4 +1,4 @@
-# Tech Challenge - Pós-Tech SOAT - FIAP
+# Tech Challenge - Pós-Tech - FIAP
 # Fase 2
 
 Alunos:
