@@ -81,12 +81,12 @@ Cada fase aborda um tema e desafio diferente, utilizando tecnologias variadas.
 
 3. Siga as instruções no README.md de cada fase caso exista, mas todas as fases possuem arquivo de descrição do desafio e arquivo de solução.
 
-👨‍💻 Integrantes:
-Aurelio Thomasi Jr
-André Mattos
-Leonardo Ramires
-Lucas Arruda
-Pedro Marins
+👨‍💻 Integrantes:  
+- Aurelio Thomasi Jr  
+- André Mattos  
+- Leonardo Ramires  
+- Lucas Arruda  
+- Pedro Marins
 
 📄 Licença:
 Este repositório está sob a licença GPL-3.0.
