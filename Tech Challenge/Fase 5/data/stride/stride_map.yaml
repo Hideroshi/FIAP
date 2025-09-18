@@ -1,0 +1,217 @@
+# mapping/stride_map.yaml
+
+# ─── Definição de grupos de ameaças ────────────────────────────────
+compute_threats: &compute_threats
+  - Tampering
+  - Denial of Service
+  - Elevation of Privilege
+
+storage_threats: &storage_threats
+  - Information Disclosure
+  - Tampering
+  - Denial of Service
+
+identity_threats: &identity_threats
+  - Spoofing
+  - Repudiation
+  - Elevation of Privilege
+
+network_threats: &network_threats
+  - Denial of Service
+  - Information Disclosure
+
+mgmt_threats: &mgmt_threats
+  - Repudiation
+  - Information Disclosure
+
+default_threats: &default_threats
+  - Spoofing
+  - Tampering
+  - Repudiation
+  - Information Disclosure
+  - Denial of Service
+  - Elevation of Privilege
+
+# ─── Mapeamento serviço → ameaças ───────────────────────────────────
+ACM:                   *identity_threats
+ALB:                   *network_threats
+AMI:                   *compute_threats
+API-Gateway:           *network_threats
+Active Directory Service: *identity_threats
+Airflow:               *mgmt_threats
+Amplify:               *compute_threats
+Analytics Services:    *storage_threats
+AppFlow:               *network_threats
+Appsync:               *network_threats
+Athena:                *storage_threats
+Aurora:                *storage_threats
+Auto Scaling:          *mgmt_threats
+Auto Scaling Group:    *mgmt_threats
+Automated Tests:       *mgmt_threats
+Availability Zone:     *network_threats
+Backup:                *storage_threats
+Build Environment:     *compute_threats
+CDN:                   *network_threats
+CUR:                   *mgmt_threats
+Call Metrics:          *mgmt_threats
+Call Recordings:       *mgmt_threats
+Certificate Manager:   *identity_threats
+Client:                *identity_threats
+Cloud Connector:       *network_threats
+Cloud Map:             *network_threats
+Cloud Search:          *storage_threats
+Cloud Trail:           *mgmt_threats
+Cloud Watch:           *mgmt_threats
+CloudFormation Stack:  *mgmt_threats
+CloudHSM:              *identity_threats
+CloudWatch Alarm:      *mgmt_threats
+Cloudfront:            *network_threats
+CodeBuild:             *compute_threats
+CodeCommit:            *compute_threats
+CodeDeploy:            *compute_threats
+CodePipeline:          *compute_threats
+Cognito:               *identity_threats
+Comprehend:            *compute_threats
+Config:                *mgmt_threats
+Connect:               *network_threats
+Connect Contact Lens:  *mgmt_threats
+Container:             *compute_threats
+Control Tower:         *mgmt_threats
+Customer Gateway:      *network_threats
+DSI:                   *mgmt_threats
+Data Pipeline:         *compute_threats
+DataSync:              *network_threats
+Deploy Stage:          *compute_threats
+Detective:             *mgmt_threats
+Direct Connect:        *network_threats
+Distribution:          *network_threats
+Docker Image:          *compute_threats
+Dynamo DB:             *storage_threats
+EBS:                   *storage_threats
+EC2:                   *compute_threats
+EFS:                   *storage_threats
+EFS Mount Target:      *storage_threats
+EKS:                   *compute_threats
+ELB:                   *network_threats
+EMR:                   *compute_threats
+Edge Location:         *network_threats
+ElastiCache:           *storage_threats
+Elastic Container Registry:  *compute_threats
+Elastic Container Service:   *compute_threats
+Elastic Search:        *storage_threats
+Elemental MediaConvert: *compute_threats
+Elemental MediaPackage: *compute_threats
+Email:                 *default_threats     # serviço genérico de e-mail
+Endpoint:              *network_threats
+Event Bus:             *network_threats
+EventBridge:           *network_threats
+Experiment Duration:   *mgmt_threats
+Experiments:           *mgmt_threats
+Fargate:               *compute_threats
+Fault Injection Simulator: *default_threats
+Firewall Manager:      *network_threats
+Flask:                 *compute_threats
+Flow logs:             *network_threats
+GameLift:              *compute_threats
+Git:                   *compute_threats
+Github:                *compute_threats
+Glacier:               *storage_threats
+Glue:                  *compute_threats
+Glue DataBrew:         *compute_threats
+Grafana:               *mgmt_threats
+GuardDuty:             *mgmt_threats
+IAM:                   *identity_threats
+IAM Role:              *identity_threats
+IOT Core:              *network_threats
+Image:                 *default_threats
+Image Builder:         *compute_threats
+Ingress:               *network_threats
+Inspector Agent:       *compute_threats
+Instances:             *compute_threats
+Internet:              *network_threats
+Internet Gateway:      *network_threats
+Jenkins:               *compute_threats
+Key Management Service: *identity_threats
+Kibana:                *mgmt_threats
+Kinesis Data Streams:  *network_threats
+Kubernetes:            *compute_threats
+Lambda:                *compute_threats
+Lex:                   *compute_threats
+MQ:                    *network_threats
+Machine Learning:      *compute_threats
+Macie:                 *mgmt_threats
+Marketplace:           *mgmt_threats
+Memcached:             *storage_threats
+Mobile Client:         *identity_threats
+Mongo DB:              *storage_threats
+MySQL:                 *storage_threats
+NAT Gateway:           *network_threats
+Neptune:               *storage_threats
+Network Adapter:       *network_threats
+Network Firewall:      *network_threats
+Notebook:              *compute_threats
+Order Controller:      *compute_threats
+Organization Trail:    *mgmt_threats
+Parameter Store:       *identity_threats
+Pinpoint:              *network_threats
+PostgreSQL:            *storage_threats
+Private Link:          *network_threats
+Private Subnet:        *network_threats
+Prometheus:            *mgmt_threats
+Public Subnet:         *network_threats
+Quarkus:               *compute_threats
+Quicksight:            *default_threats
+RDS:                   *storage_threats
+React:                 *compute_threats
+Redis:                 *storage_threats
+Redshift:              *storage_threats
+Region:                *network_threats
+Rekognition:           *compute_threats
+Results:               *mgmt_threats
+Route 53:              *network_threats
+Route53:               *network_threats
+S3:                    *storage_threats
+SAR:                   *mgmt_threats
+SDK:                   *compute_threats
+SES:                   *default_threats
+SNS:                   *network_threats
+SQS:                   *network_threats
+SSM Agent:             *mgmt_threats
+Sagemaker:             *compute_threats
+Secret Manager:        *identity_threats
+Security Group:        *network_threats
+Security Hub:          *mgmt_threats
+Server:                *compute_threats
+Service Catalog:       *mgmt_threats
+Shield:                *network_threats
+Sign-On:               *identity_threats
+Slack:                 *mgmt_threats
+Snowball:              *storage_threats
+Stack:                 *mgmt_threats
+Step Function:         *compute_threats
+Storage Gateway:       *network_threats
+SwaggerHub:            *compute_threats
+Systems Manager:       *mgmt_threats
+TV:                    *default_threats
+Table:                 *storage_threats
+Task Runner:           *compute_threats
+Terraform:             *compute_threats
+Text File:             *default_threats
+Textract:              *compute_threats
+Transcribe:            *compute_threats
+Transfer Family:       *network_threats
+Transit Gateway:       *network_threats
+Translate:             *compute_threats
+Trusted Advisor:       *mgmt_threats
+Twilio:                *network_threats
+Users:                 *identity_threats
+VDA:                   *compute_threats
+VP Gateway:            *network_threats
+VPC Router:            *network_threats
+VPN Connection:        *network_threats
+WAF:                   *network_threats
+Web Clients:           *default_threats
+Websites:              *default_threats
+X-Ray:                 *mgmt_threats
+aws:                   *default_threats
+cache Worker:          *compute_threats

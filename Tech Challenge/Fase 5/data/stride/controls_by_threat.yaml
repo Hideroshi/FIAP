@@ -1,0 +1,56 @@
+Spoofing:
+  cwe:
+  - 287
+  - 345
+  - 306
+  controls:
+  - Implement strong authentication mechanisms (MFA, OAuth)
+  - Use digital certificates and signatures
+  - Enforce unique user credentials and tokens
+  - Implement mutual TLS
+Tampering:
+  cwe:
+  - 20
+  - 362
+  - 327
+  controls:
+  - Apply input validation and sanitization
+  - Use integrity checks (CRC, hashes)
+  - Enable digital code signing
+  - Restrict modification permissions via RBAC
+Repudiation:
+  cwe:
+  - 307
+  - 778
+  controls:
+  - Maintain secure audit logs with tamper-evident storage
+  - Use digital signatures for transactions
+  - Implement non-repudiation mechanisms
+  - Timestamp critical operations
+Information Disclosure:
+  cwe:
+  - 200
+  - 201
+  controls:
+  - Encrypt data at rest and in transit (TLS, AES)
+  - Apply principle of least privilege for data access
+  - Use tokenization or data masking
+  - Implement strict access control lists (ACLs)
+Denial of Service:
+  cwe:
+  - 400
+  - 404
+  controls:
+  - Implement rate limiting and throttling
+  - Use load balancing and auto-scaling
+  - Deploy WAF and DDoS protection services
+  - Monitor and alert on traffic anomalies
+Elevation of Privilege:
+  cwe:
+  - 269
+  - 284
+  controls:
+  - Enforce least privilege and role-based access control (RBAC)
+  - Conduct regular permission reviews
+  - Use secure default configurations
+  - Implement security patches and updates promptly

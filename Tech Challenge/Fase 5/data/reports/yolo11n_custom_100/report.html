@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html><head><style>body {background-color: #ffffff !important;color: #000000 !important; } </style><meta charset="utf-8"><title>Report</title></head><body><h1>Threat Model Report</h1>
+<p>Gerado automaticamente</p>
+<h2>Cloud Watch  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.95</li>
+<li><strong>BBox:</strong> [158.73118591308594, 134.70912170410156, 214.4825897216797, 190.13165283203125]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Repudiation</strong>  </p>
+<ul>
+<li>CWEs: [307, 778]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Maintain secure audit logs with tamper-evident storage</p>
+</li>
+<li>
+<p>Use digital signatures for transactions</p>
+</li>
+<li>
+<p>Implement non-repudiation mechanisms</p>
+</li>
+<li>
+<p>Timestamp critical operations</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Information Disclosure</strong>  </p>
+<ul>
+<li>CWEs: [200, 201]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Encrypt data at rest and in transit (TLS, AES)</p>
+</li>
+<li>
+<p>Apply principle of least privilege for data access</p>
+</li>
+<li>
+<p>Use tokenization or data masking</p>
+</li>
+<li>
+<p>Implement strict access control lists (ACLs)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>SNS  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.94</li>
+<li><strong>BBox:</strong> [564.5737915039062, 34.94062423706055, 621.8296508789062, 90.59419250488281]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Information Disclosure</strong>  </p>
+<ul>
+<li>CWEs: [200, 201]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Encrypt data at rest and in transit (TLS, AES)</p>
+</li>
+<li>
+<p>Apply principle of least privilege for data access</p>
+</li>
+<li>
+<p>Use tokenization or data masking</p>
+</li>
+<li>
+<p>Implement strict access control lists (ACLs)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>SNS  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.93</li>
+<li><strong>BBox:</strong> [353.31591796875, 508.43121337890625, 411.48797607421875, 564.5737915039062]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Information Disclosure</strong>  </p>
+<ul>
+<li>CWEs: [200, 201]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Encrypt data at rest and in transit (TLS, AES)</p>
+</li>
+<li>
+<p>Apply principle of least privilege for data access</p>
+</li>
+<li>
+<p>Use tokenization or data masking</p>
+</li>
+<li>
+<p>Implement strict access control lists (ACLs)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Lambda  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.93</li>
+<li><strong>BBox:</strong> [354.8625793457031, 296.99102783203125, 409.55682373046875, 352.95037841796875]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Tampering</strong>  </p>
+<ul>
+<li>CWEs: [20, 362, 327]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Apply input validation and sanitization</p>
+</li>
+<li>
+<p>Use integrity checks (CRC, hashes)</p>
+</li>
+<li>
+<p>Enable digital code signing</p>
+</li>
+<li>
+<p>Restrict modification permissions via RBAC</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elevation of Privilege</strong>  </p>
+<ul>
+<li>CWEs: [269, 284]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Enforce least privilege and role-based access control (RBAC)</p>
+</li>
+<li>
+<p>Conduct regular permission reviews</p>
+</li>
+<li>
+<p>Use secure default configurations</p>
+</li>
+<li>
+<p>Implement security patches and updates promptly</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Lambda  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.93</li>
+<li><strong>BBox:</strong> [468.01849365234375, 33.32695388793945, 522.2258911132812, 88.40184783935547]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Tampering</strong>  </p>
+<ul>
+<li>CWEs: [20, 362, 327]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Apply input validation and sanitization</p>
+</li>
+<li>
+<p>Use integrity checks (CRC, hashes)</p>
+</li>
+<li>
+<p>Enable digital code signing</p>
+</li>
+<li>
+<p>Restrict modification permissions via RBAC</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elevation of Privilege</strong>  </p>
+<ul>
+<li>CWEs: [269, 284]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Enforce least privilege and role-based access control (RBAC)</p>
+</li>
+<li>
+<p>Conduct regular permission reviews</p>
+</li>
+<li>
+<p>Use secure default configurations</p>
+</li>
+<li>
+<p>Implement security patches and updates promptly</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Dynamo DB  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.93</li>
+<li><strong>BBox:</strong> [466.929443359375, 362.81964111328125, 523.41259765625, 416.73809814453125]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Information Disclosure</strong>  </p>
+<ul>
+<li>CWEs: [200, 201]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Encrypt data at rest and in transit (TLS, AES)</p>
+</li>
+<li>
+<p>Apply principle of least privilege for data access</p>
+</li>
+<li>
+<p>Use tokenization or data masking</p>
+</li>
+<li>
+<p>Implement strict access control lists (ACLs)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tampering</strong>  </p>
+<ul>
+<li>CWEs: [20, 362, 327]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Apply input validation and sanitization</p>
+</li>
+<li>
+<p>Use integrity checks (CRC, hashes)</p>
+</li>
+<li>
+<p>Enable digital code signing</p>
+</li>
+<li>
+<p>Restrict modification permissions via RBAC</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Lambda  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.93</li>
+<li><strong>BBox:</strong> [354.0865173339844, 133.47132873535156, 407.4743957519531, 189.1138458251953]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Tampering</strong>  </p>
+<ul>
+<li>CWEs: [20, 362, 327]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Apply input validation and sanitization</p>
+</li>
+<li>
+<p>Use integrity checks (CRC, hashes)</p>
+</li>
+<li>
+<p>Enable digital code signing</p>
+</li>
+<li>
+<p>Restrict modification permissions via RBAC</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elevation of Privilege</strong>  </p>
+<ul>
+<li>CWEs: [269, 284]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Enforce least privilege and role-based access control (RBAC)</p>
+</li>
+<li>
+<p>Conduct regular permission reviews</p>
+</li>
+<li>
+<p>Use secure default configurations</p>
+</li>
+<li>
+<p>Implement security patches and updates promptly</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Lambda  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.93</li>
+<li><strong>BBox:</strong> [252.94564819335938, 508.17498779296875, 307.6413269042969, 564.6456298828125]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Tampering</strong>  </p>
+<ul>
+<li>CWEs: [20, 362, 327]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Apply input validation and sanitization</p>
+</li>
+<li>
+<p>Use integrity checks (CRC, hashes)</p>
+</li>
+<li>
+<p>Enable digital code signing</p>
+</li>
+<li>
+<p>Restrict modification permissions via RBAC</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elevation of Privilege</strong>  </p>
+<ul>
+<li>CWEs: [269, 284]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Enforce least privilege and role-based access control (RBAC)</p>
+</li>
+<li>
+<p>Conduct regular permission reviews</p>
+</li>
+<li>
+<p>Use secure default configurations</p>
+</li>
+<li>
+<p>Implement security patches and updates promptly</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Lambda  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.93</li>
+<li><strong>BBox:</strong> [565.5076293945312, 362.494384765625, 620.9829711914062, 417.7193908691406]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Tampering</strong>  </p>
+<ul>
+<li>CWEs: [20, 362, 327]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Apply input validation and sanitization</p>
+</li>
+<li>
+<p>Use integrity checks (CRC, hashes)</p>
+</li>
+<li>
+<p>Enable digital code signing</p>
+</li>
+<li>
+<p>Restrict modification permissions via RBAC</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elevation of Privilege</strong>  </p>
+<ul>
+<li>CWEs: [269, 284]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Enforce least privilege and role-based access control (RBAC)</p>
+</li>
+<li>
+<p>Conduct regular permission reviews</p>
+</li>
+<li>
+<p>Use secure default configurations</p>
+</li>
+<li>
+<p>Implement security patches and updates promptly</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Users  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.92</li>
+<li><strong>BBox:</strong> [561.3887939453125, 508.2244567871094, 607.3621826171875, 558.4323120117188]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Spoofing</strong>  </p>
+<ul>
+<li>CWEs: [287, 345, 306]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement strong authentication mechanisms (MFA, OAuth)</p>
+</li>
+<li>
+<p>Use digital certificates and signatures</p>
+</li>
+<li>
+<p>Enforce unique user credentials and tokens</p>
+</li>
+<li>
+<p>Implement mutual TLS</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Repudiation</strong>  </p>
+<ul>
+<li>CWEs: [307, 778]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Maintain secure audit logs with tamper-evident storage</p>
+</li>
+<li>
+<p>Use digital signatures for transactions</p>
+</li>
+<li>
+<p>Implement non-repudiation mechanisms</p>
+</li>
+<li>
+<p>Timestamp critical operations</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elevation of Privilege</strong>  </p>
+<ul>
+<li>CWEs: [269, 284]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Enforce least privilege and role-based access control (RBAC)</p>
+</li>
+<li>
+<p>Conduct regular permission reviews</p>
+</li>
+<li>
+<p>Use secure default configurations</p>
+</li>
+<li>
+<p>Implement security patches and updates promptly</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>S3  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.92</li>
+<li><strong>BBox:</strong> [255.50390625, 132.26968383789062, 312.2162170410156, 190.528076171875]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Information Disclosure</strong>  </p>
+<ul>
+<li>CWEs: [200, 201]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Encrypt data at rest and in transit (TLS, AES)</p>
+</li>
+<li>
+<p>Apply principle of least privilege for data access</p>
+</li>
+<li>
+<p>Use tokenization or data masking</p>
+</li>
+<li>
+<p>Implement strict access control lists (ACLs)</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Tampering</strong>  </p>
+<ul>
+<li>CWEs: [20, 362, 327]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Apply input validation and sanitization</p>
+</li>
+<li>
+<p>Use integrity checks (CRC, hashes)</p>
+</li>
+<li>
+<p>Enable digital code signing</p>
+</li>
+<li>
+<p>Restrict modification permissions via RBAC</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>SNS  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.91</li>
+<li><strong>BBox:</strong> [256.6446533203125, 297.7004699707031, 310.1938781738281, 350.84454345703125]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Denial of Service</strong>  </p>
+<ul>
+<li>CWEs: [400, 404]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement rate limiting and throttling</p>
+</li>
+<li>
+<p>Use load balancing and auto-scaling</p>
+</li>
+<li>
+<p>Deploy WAF and DDoS protection services</p>
+</li>
+<li>
+<p>Monitor and alert on traffic anomalies</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Information Disclosure</strong>  </p>
+<ul>
+<li>CWEs: [200, 201]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Encrypt data at rest and in transit (TLS, AES)</p>
+</li>
+<li>
+<p>Apply principle of least privilege for data access</p>
+</li>
+<li>
+<p>Use tokenization or data masking</p>
+</li>
+<li>
+<p>Implement strict access control lists (ACLs)</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Users  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.91</li>
+<li><strong>BBox:</strong> [671.10107421875, 162.9310760498047, 718.923095703125, 211.8299102783203]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Spoofing</strong>  </p>
+<ul>
+<li>CWEs: [287, 345, 306]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement strong authentication mechanisms (MFA, OAuth)</p>
+</li>
+<li>
+<p>Use digital certificates and signatures</p>
+</li>
+<li>
+<p>Enforce unique user credentials and tokens</p>
+</li>
+<li>
+<p>Implement mutual TLS</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Repudiation</strong>  </p>
+<ul>
+<li>CWEs: [307, 778]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Maintain secure audit logs with tamper-evident storage</p>
+</li>
+<li>
+<p>Use digital signatures for transactions</p>
+</li>
+<li>
+<p>Implement non-repudiation mechanisms</p>
+</li>
+<li>
+<p>Timestamp critical operations</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elevation of Privilege</strong>  </p>
+<ul>
+<li>CWEs: [269, 284]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Enforce least privilege and role-based access control (RBAC)</p>
+</li>
+<li>
+<p>Conduct regular permission reviews</p>
+</li>
+<li>
+<p>Use secure default configurations</p>
+</li>
+<li>
+<p>Implement security patches and updates promptly</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Users  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.89</li>
+<li><strong>BBox:</strong> [2.207780599594116, 216.19424438476562, 46.776954650878906, 264.2774658203125]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Spoofing</strong>  </p>
+<ul>
+<li>CWEs: [287, 345, 306]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Implement strong authentication mechanisms (MFA, OAuth)</p>
+</li>
+<li>
+<p>Use digital certificates and signatures</p>
+</li>
+<li>
+<p>Enforce unique user credentials and tokens</p>
+</li>
+<li>
+<p>Implement mutual TLS</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Repudiation</strong>  </p>
+<ul>
+<li>CWEs: [307, 778]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Maintain secure audit logs with tamper-evident storage</p>
+</li>
+<li>
+<p>Use digital signatures for transactions</p>
+</li>
+<li>
+<p>Implement non-repudiation mechanisms</p>
+</li>
+<li>
+<p>Timestamp critical operations</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Elevation of Privilege</strong>  </p>
+<ul>
+<li>CWEs: [269, 284]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Enforce least privilege and role-based access control (RBAC)</p>
+</li>
+<li>
+<p>Conduct regular permission reviews</p>
+</li>
+<li>
+<p>Use secure default configurations</p>
+</li>
+<li>
+<p>Implement security patches and updates promptly</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Cloud Watch  (aws_01.jpg)</h2>
+<ul>
+<li><strong>Confiança:</strong> 0.78</li>
+<li><strong>BBox:</strong> [158.4956512451172, 436.018310546875, 214.282958984375, 489.6875915527344]</li>
+<li>
+<p><strong>Ameaças:</strong></p>
+</li>
+<li>
+<p><strong>Repudiation</strong>  </p>
+<ul>
+<li>CWEs: [307, 778]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Maintain secure audit logs with tamper-evident storage</p>
+</li>
+<li>
+<p>Use digital signatures for transactions</p>
+</li>
+<li>
+<p>Implement non-repudiation mechanisms</p>
+</li>
+<li>
+<p>Timestamp critical operations</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Information Disclosure</strong>  </p>
+<ul>
+<li>CWEs: [200, 201]  </li>
+<li>
+<p>Contramedidas:</p>
+</li>
+<li>
+<p>Encrypt data at rest and in transit (TLS, AES)</p>
+</li>
+<li>
+<p>Apply principle of least privilege for data access</p>
+</li>
+<li>
+<p>Use tokenization or data masking</p>
+</li>
+<li>
+<p>Implement strict access control lists (ACLs)</p>
+</li>
+</ul>
+</li>
+</ul></body></html>
